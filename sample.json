@@ -1,11 +1,3 @@
-Bash Json Parser
-================
-
-A simple bash parser that uses python to query from values with dot-notation. Fairly simple library to use. The code is very simple, if you need additional functionality please feel free to add.
-
-Sample Json
------
-```json
 {
     "took": 1,
     "timed_out": false,
@@ -42,42 +34,3 @@ Sample Json
         ]
     }
 }
-```
-
-
-Accessing Values at depth one
---------
-
-```bash
-	./parser 'took' sample.json
-	# will return '1'
-```
-
-Accessing Arrays
---------
-
-```bash
-	./parser 'took.hits' sample.json
-	# will return the hits array. not useful in bash as it's a python dictionary
-```
-
-Accessing Arrays Elements inside an array
---------
-
-```bash
-	./parser 'took.hits.0.email' sample.json
-	# will return 'ferronrsmith@gmail.com'
-```
-
-Going in Limbo
---------
-
-```bash
-	./parser 'hits.hits.0._source.commandCenterAccess.1' sample.json
-	# will return 'queryRewrite'
-```
-
-
-...
-----
-I have tested it will fairly nested json and it still works! feel free to write your own examples and enhancements, thanks!
