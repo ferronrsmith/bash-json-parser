@@ -58,7 +58,8 @@ Accessing Arrays
 
 ```bash
 	./parser 'hits.hits' sample.json
-	# will return the hits array. not useful in bash as it's a python dictionary as shown below :
+	# will return the hits array. not useful in bash \
+    as it's a python dictionary as shown below :
 ```
 
 ```json
