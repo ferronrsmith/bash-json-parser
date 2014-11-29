@@ -6,13 +6,13 @@ function get_json_val() {
     local query=""
     for i in "${!array[@]}"
     do
-        if [[ ${array[i]} =~ ^-?[0-9]+$ ]]; then
-          query+="[${array[i]}]"
-        else
-          query+='["'${array[i]}'"]'
-        fi
+      if [[ ${array[i]} =~ ^-?[0-9]+$ ]]; then
+        query+=("[${array[i]}]")
+      else
+        query+=("['${array[i]}']")
+      fi
     done
-    echo "${2}" | python -c 'import json,sys;obj=json.load(sys.stdin);print obj'${query}''
+    echo "${2}" | python -c 'import json,sys;obj=json.load(sys.stdin);print obj'"${query[*]}"''
 }
 
 _query="${1}"
@@ -27,7 +27,7 @@ elif [ -z "${_data}" ]; then
 else
 
   if test -f "${_data}"; then
-    _data=$(cat ${_data})
+    _data=$(cat "${_data}")
   fi
 
   get_json_val "${_query}" "${_data}"

@@ -57,15 +57,42 @@ Accessing Arrays
 --------
 
 ```bash
-	./parser 'took.hits' sample.json
-	# will return the hits array. not useful in bash as it's a python dictionary
+	./parser 'hits.hits' sample.json
+	# will return the hits array. not useful in bash as it's a python dictionary as shown below :
 ```
+
+```json
+"hits": [
+    {
+        "_index": "command",
+        "_type": "User",
+        "_id": "AUnn9-3omsClW1gNsSXi",
+        "_score": 1.4142135,
+        "_source": {
+            "customerId": "blah",
+            "email": "ferronrsmith@gmail.com",
+            "password": "V7KtmQRNM3GXwMOf04I1asdsP-sdas2323B5Io",
+            "validated": true,
+            "areas": [
+                "Production"
+            ],
+            "access": [
+                "merchandising",
+                "queryRewrite",
+                "engineConfiguration",
+                "admin"
+            ]
+        }
+    }
+]
+```
+
 
 Accessing Arrays Elements inside an array
 --------
 
 ```bash
-	./parser 'took.hits.0.email' sample.json
+	./parser 'hits.hits.0._source.email' sample.json
 	# will return 'ferronrsmith@gmail.com'
 ```
 
@@ -73,7 +100,7 @@ Going in Limbo
 --------
 
 ```bash
-	./parser 'hits.hits.0._source.commandCenterAccess.1' sample.json
+	./parser 'hits.hits.0._source.access.1' sample.json
 	# will return 'queryRewrite'
 ```
 
